@@ -54,3 +54,58 @@ if (
 } else {
   darkToggle.checked = false;
 }
+
+// Typing animation
+const typedEl = document.querySelector("#typed-text");
+const phrases = ["Software Engineer", "Frontend Developer", "Fullstack Developer", "UI Enthusiast"];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function type() {
+  const current = phrases[phraseIndex];
+  if (isDeleting) {
+    typedEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+  } else {
+    typedEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+  }
+
+  let delay = isDeleting ? 60 : 100;
+
+  if (!isDeleting && charIndex === current.length) {
+    delay = 1800;
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    phraseIndex = (phraseIndex + 1) % phrases.length;
+    delay = 400;
+  }
+
+  setTimeout(type, delay);
+}
+
+setTimeout(type, 800);
+
+// Scroll reveal
+const revealElements = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+);
+
+revealElements.forEach((el) => observer.observe(el));
+
+// Fallback: ensure all reveals become visible after 3s
+setTimeout(() => {
+  revealElements.forEach((el) => el.classList.add("visible"));
+}, 3000);
