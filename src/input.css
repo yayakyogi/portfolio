@@ -135,30 +135,6 @@ body {
 }
 
 /* Timeline */
-.timeline-container {
-  position: relative;
-  padding-left: 36px;
-}
-.timeline-container::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 8px;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #FF0066 0%, rgba(255,0,102,0.1) 100%);
-}
-.timeline-dot {
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #FF0066;
-  box-shadow: 0 0 0 4px rgba(255, 0, 102, 0.2);
-  flex-shrink: 0;
-}
 .timeline-item {
   position: relative;
   margin-bottom: 32px;
@@ -186,7 +162,8 @@ body {
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   transition: all 0.35s ease;
   border: 1px solid transparent;
-  margin-bottom: 20px;
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
 }
 .portfolio-card:hover {
   transform: translateY(-6px);
@@ -196,6 +173,11 @@ body {
 .dark .portfolio-card {
   background: #1e293b;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+/* Override unlayered display:flex so the filter's .hidden toggle works
+   (Tailwind's .hidden lives in @layer utilities and would otherwise lose) */
+.portfolio-card.hidden {
+  display: none;
 }
 .portfolio-img-wrap {
   overflow: hidden;
@@ -279,6 +261,26 @@ body {
   color: #FF0066;
 }
 
+/* Skill badge (for skills without an icon) */
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.25s ease;
+}
+.skill-badge:hover {
+  color: #fff;
+  background: rgba(255, 0, 102, 0.08);
+  border-color: rgba(255, 0, 102, 0.45);
+  transform: translateY(-2px);
+}
+
 /* Scroll reveal — content visible by default, animates in when scrolled to */
 @keyframes revealUp {
   from {
@@ -336,4 +338,83 @@ body {
 .dots-bg {
   background-image: radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+
+/* Active nav link indicator */
+.nav-link.nav-active {
+  color: #FF0066;
+  font-weight: 600;
+}
+
+/* Language toggle */
+.lang-btn {
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.lang-btn:hover {
+  color: #FF0066;
+}
+.lang-btn.active {
+  background: #FF0066;
+  color: #fff;
+}
+
+/* Portfolio filter bar */
+.filter-btn {
+  display: inline-block;
+  padding: 8px 22px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.filter-btn:hover {
+  color: #fff;
+  border-color: rgba(255, 0, 102, 0.5);
+}
+.filter-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #FF0066, #cc0052);
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(255, 0, 102, 0.35);
+}
+
+/* Portfolio card consistent CTA footer */
+.portfolio-footer {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #FF0066;
+  transition: gap 0.2s ease;
+}
+.portfolio-link:hover {
+  gap: 9px;
+}
+
+/* Accessible focus state for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #FF0066;
+  outline-offset: 3px;
+  border-radius: 6px;
 }
