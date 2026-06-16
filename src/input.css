@@ -87,7 +87,10 @@ body {
 
 /* Buttons */
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: linear-gradient(135deg, #FF0066, #cc0052);
   color: white;
   padding: 12px 32px;
@@ -104,7 +107,10 @@ body {
 }
 
 .btn-outline {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border: 2px solid #FF0066;
   color: #FF0066;
   padding: 10px 32px;

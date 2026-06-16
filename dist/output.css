@@ -1184,7 +1184,10 @@ html, body {
   }
 }
 .btn-primary {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   background: linear-gradient(135deg, #FF0066, #cc0052);
   color: white;
   padding: 12px 32px;
@@ -1200,7 +1203,10 @@ html, body {
   box-shadow: 0 8px 30px rgba(255, 0, 102, 0.55);
 }
 .btn-outline {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   border: 2px solid #FF0066;
   color: #FF0066;
   padding: 10px 32px;
