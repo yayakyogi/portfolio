@@ -172,6 +172,7 @@ const idDict = {
     'Fullstack developer yang antusias membangun pengalaman web yang bersih, cepat, dan menarik. 4+ tahun berfokus pada <span class="font-semibold text-white">React, Next.js, Vue, Angular &amp; Remix</span> di sisi frontend, dengan <span class="font-semibold text-white">NestJS</span>, <span class="font-semibold text-white">Laravel</span> dan REST / GraphQL API di sisi backend.',
   "hero.cta.portfolio": "Lihat Portofolio",
   "hero.cta.contact": "Hubungi Saya",
+  "hero.cta.cv": "Unduh CV",
 
   // Experience
   "exp.badge": "Karier",
